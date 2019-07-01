@@ -1,28 +1,61 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <title>Alura Typer</title>
+  <meta charset="UTF-8">
+  <title>Alura Typer</title>
+  <link rel="stylesheet" href="css/libs/google-fonts.css" />
+  <link rel="stylesheet" href="css/libs/materialize.min.css" />
+  <link rel="stylesheet" href="css/estilos.css"
 </head>
 <body>
-    <h1>Alura Typer</h1>
-    <p class="frase">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+  <div class="container" >
+    <h1 class="center">Alura Typer</h1>
+    <p class="frase center">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 
-    <ul class="informacoes">
-        <li><span id="frase-size">0</span> palavras</li>
-        <li><span id="caracteres-size">0</span> caracteres</li>
-    </ul>
+    <ul class="informacoes center">
+      <li>
+        <i class="small material-icons icones">description</i>
+        <span id="frase-size">0</span> palavras</li>
+        <li>
+          <i class="small material-icons icones">query_builder</i>
+          <span id="tempo-segundos">10</span> segundos</li>
+        </ul>
 
-    <textarea class="campo-digitacao" rows="8" cols="40"> </textarea>
-    <button id="botao-reiniciar">Reiniciar Jogo</button>
+        <textarea class="campo-digitacao" rows="8" cols="40"> </textarea>
 
-    <ul class="informacoes">
-        <li><span id="qtd-frase">0</span> palavras</li>
-        <li><span id="qtd-caracteres">0</span> caracteres</li>
-        <li><span id="tempo-segundos">10</span> segundos</li>
-    </ul>
+        <div>
+          <a id="botao-reiniciar" class="btn-floating btn-large waves-effect waves-light red">
+            <i class="material-icons">restore</i>
+          </a>
+        </div>
 
-    <script src="js/jquery.js"></script>
-    <script src="js/main.js"></script>
-</body>
+        <ul class="informacoes center">
+          <li><span id="qtd-frase">0</span> palavras</li>
+          <li><span id="qtd-caracteres">0</span> caracteres</li>
+        </ul>
+
+          <section class="placar">
+            <h3 class="center">Placar</h3>
+            <table class="centered bordered">
+              <thead>
+                <tr>
+                  <th>Nome</th>
+                  <th>No. Palavras</th>
+                </tr>
+              </thead>
+              <tbody class="center">
+                <tr>
+                  <th class="center">Douglas</th>
+                  <th class="center" >10</th>
+                </tr>
+              </tbody>
+            </table>
+          </section>
+
+
+        </container>
+
+        <script src="js/jquery.js"></script>
+        <script src="js/main.js"></script>
+      </body>
 </html>

@@ -1,0 +1,13 @@
+-A função .text() pode ser usada para pegar de elementos como <h1>, <span> e <p>.
+-A função .val() pode ser usada para pegar de elementos como <input>, <textarea> e <select>.
+-As funções .val() e .text() servem tanto para alterar como para pegar o valor do texto de elementos.
+
+----------------------------------------------------------------------------------
+A função .one() funciona de modo semelhante a função .on(), ambas podem ser utilizadas
+em qualquer elemento, recebem qualquer evento como primeiro parâmetro e uma função anônima
+ou uma função nomeada como segundo parâmetro.
+
+A diferença entre elas é na hora de escutar os eventos, a função .one() escuta o evento
+apenas uma única vez, diferentemente da função on(), que como já vimos fica escutando o evento
+em um elemento do HTML por tempo ilimitado.
+----------------------------------------------------------------------------------

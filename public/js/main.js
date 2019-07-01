@@ -2,22 +2,23 @@
 var tempoMax = 10;
 var tempoInit = 0;
 var campo = $(".campo-digitacao");
+var frase = $(".frase").text();
 
 $(document).ready(function(){
   inicializaTamanhoFrase();
   inicializaContadores();
   inicializaCronometro();
+  inicializaMarcadores();
   reiniciarJogo();
   $("#botao-reiniciar").click(reiniciarJogo);
+
 });
 
 //------------------------------------------------------------------------------
 //1- parte
 function inicializaTamanhoFrase(){
-  var frase = $(".frase").text();
   var numPalavras = frase.split(" ").length;
   $("#frase-size").text(numPalavras);
-  $("#caracteres-size").text(frase.length);
 }
 //------------------------------------------------------------------------------
 //2- parte
@@ -45,11 +46,19 @@ function inicializaCronometro(){
       //console.log(tempo);
       $("#tempo-segundos").text(tempo);
       if(tempo < 1){
-        campo.attr("disabled",true);
         clearInterval(cronometroID);
+        finalizaJogo();
       }
     },1000);
   });
+}
+
+function finalizaJogo(){
+  campo.attr("disabled",true);
+  //campo.css("background-color","lightgray");
+  //campo.addClass("campo-desativado");
+  campo.toggleClass("campo-desativado"); //coloca ou retira a classe
+  inserirPlacar();
 }
 //------------------------------------------------------------------------------
 //4- parte
@@ -60,4 +69,36 @@ function reiniciarJogo(){
     $("#qtd-frase").text(tempoInit);
     $("#tempo-segundos").text(tempoMax);
     inicializaCronometro();
+    //campo.removeClass("campo-desativado");
+    campo.toggleClass("campo-desativado"); //coloca ou retira a classe
+    campo.removeClass("borda-vermelha");
+    campo.removeClass("borda-verde");
+}
+//------------------------------------------------------------------------------
+//5- parte
+function inicializaMarcadores(){
+  campo.on("input", function(){
+      var digitado = campo.val();
+      var comparavel = frase.substr(0,digitado.length);
+
+      if(digitado == comparavel){
+        campo.addClass("borda-verde");
+        campo.removeClass("borda-vermelha");
+      }else{
+        campo.addClass("borda-vermelha");
+        campo.removeClass("borda-verde");
+      }
+  });
+
+}
+//------------------------------------------------------------------------------
+//6- parte
+function inserirPlacar(){
+  var corpoTabela = $(".placar").find("tbody");
+  var usuario= "Alessandro";
+  var numPalavras = $("#qtd-frase").text();
+
+  var linha = "<tr>" + "<td>" + usuario + "</td>" + "<td>" + numPalavras + "</td>" + "</tr>";
+
+  corpoTabela.prepend(linha); //inserir no inicio
 }
