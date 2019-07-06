@@ -11,7 +11,6 @@ $(document).ready(function(){
   inicializaMarcadores();
   reiniciarJogo();
   $("#botao-reiniciar").click(reiniciarJogo);
-
 });
 
 //------------------------------------------------------------------------------
@@ -46,19 +45,20 @@ function inicializaCronometro(){
       //console.log(tempo);
       $("#tempo-segundos").text(tempo);
       if(tempo < 1){
-        clearInterval(cronometroID);
+        tempo = tempoMax;
         finalizaJogo();
+        clearInterval(cronometroID);
       }
     },1000);
   });
 }
 
 function finalizaJogo(){
+  inserirPlacar();
   campo.attr("disabled",true);
   //campo.css("background-color","lightgray");
   //campo.addClass("campo-desativado");
   campo.toggleClass("campo-desativado"); //coloca ou retira a classe
-  inserirPlacar();
 }
 //------------------------------------------------------------------------------
 //4- parte
@@ -70,7 +70,7 @@ function reiniciarJogo(){
     $("#tempo-segundos").text(tempoMax);
     inicializaCronometro();
     //campo.removeClass("campo-desativado");
-    campo.toggleClass("campo-desativado"); //coloca ou retira a classe
+    campo.toggleClass("campo-desativado",false); //coloca ou retira a classe
     campo.removeClass("borda-vermelha");
     campo.removeClass("borda-verde");
 }
@@ -90,15 +90,4 @@ function inicializaMarcadores(){
       }
   });
 
-}
-//------------------------------------------------------------------------------
-//6- parte
-function inserirPlacar(){
-  var corpoTabela = $(".placar").find("tbody");
-  var usuario= "Alessandro";
-  var numPalavras = $("#qtd-frase").text();
-
-  var linha = "<tr>" + "<td>" + usuario + "</td>" + "<td>" + numPalavras + "</td>" + "</tr>";
-
-  corpoTabela.prepend(linha); //inserir no inicio
 }
